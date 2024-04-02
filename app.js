@@ -4,10 +4,13 @@ const p2Button = document.querySelector('#p2-button');
 const p1Display = document.querySelector('#p1-display');
 const p2Display = document.querySelector('#p2-display');
 
+const resetButton = document.querySelector('#reset');
+const winPointOption = document.querySelector('#winPoint');
+
 let p1Score = 0;
 let p2Score = 0;
 
-let winPoint = 10;
+let winPoint = 5;
 let isGameOver = false;
 
 p1Button.addEventListener('click', () => {
@@ -30,3 +33,17 @@ p2Button.addEventListener('click', () => {
     }
 })
 
+function reset() {
+    isGameOver = false;
+    p1Score = 0;
+    p2Score = 0;
+    p1Display.textContent = 0;
+    p2Display.textContent = 0;
+}
+
+resetButton.addEventListener('click', reset);
+
+winPointOption.addEventListener('change', () => {
+    winPoint = parseInt(this.value)
+    reset();
+})
